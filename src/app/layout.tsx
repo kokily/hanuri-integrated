@@ -1,13 +1,13 @@
 import 'styles/tailwind.css';
 import type { Metadata } from 'next';
 import { Roboto_Flex } from 'next/font/google';
+import Script from 'next/script';
 import clsx from 'clsx';
 
+import QueryWrapper from '_wrapper/QueryWrapper';
 import AuthWrapper from '_wrapper/AuthWrapper';
 import { Footer } from '_components/footer/Footer';
 import { Header } from '_components/header/Header';
-import QueryWrapper from '_wrapper/QueryWrapper';
-import Script from 'next/script';
 
 const roboto = Roboto_Flex({
   subsets: ['latin'],
@@ -26,14 +26,7 @@ export const metadata: Metadata = {
     url: 'https://hanuri.or.kr',
     title,
     siteName: '하누리 봉사회',
-    images: [
-      {
-        url: '/images/logo.webp',
-        width: 562,
-        height: 178,
-        alt: 'Title Image',
-      },
-    ],
+    images: ['logo.webp'],
   },
 };
 
@@ -44,6 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </head>
       <body className={(clsx('font-sans'), roboto.variable)}>
         <QueryWrapper>
           <AuthWrapper>
@@ -54,7 +50,7 @@ export default function RootLayout({
         </QueryWrapper>
       </body>
       <Script
-        async
+        async={true}
         src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
         strategy="beforeInteractive"
       />
