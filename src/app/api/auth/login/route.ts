@@ -3,13 +3,13 @@ import bcrypt from 'bcryptjs';
 import { signJwtAccessToken } from '_helpers/client/jwt';
 import db from '_helpers/server/database';
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   type RequestType = {
     username: string;
     password: string;
   };
 
-  const body = (await request.json()) as RequestType;
+  const body = (await req.json()) as RequestType;
 
   const user = await db.user.findUnique({
     where: {

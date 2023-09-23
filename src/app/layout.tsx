@@ -45,13 +45,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={(clsx('font-sans'), roboto.variable)}>
-        <AuthWrapper>
-          <QueryWrapper>
+        <QueryWrapper>
+          <AuthWrapper>
             <Header />
             {children}
             <Footer />
-          </QueryWrapper>
-        </AuthWrapper>
+          </AuthWrapper>
+        </QueryWrapper>
       </body>
       <Script
         async
