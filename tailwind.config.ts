@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const purple = {
   900: '#160041',
@@ -27,9 +28,7 @@ const yellow = {
 };
 
 const config: Config = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -73,6 +72,10 @@ const config: Config = {
 
       maxWidth: {
         prose: '65ch',
+      },
+
+      sepia: {
+        40: '.40',
       },
 
       scale: {
@@ -185,6 +188,10 @@ const config: Config = {
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
+    plugin(function ({ addVariant }) {
+      addVariant('child', '& > *');
+      addVariant('child:hover', '& > *:hover');
+    }),
   ],
 };
 export default config;

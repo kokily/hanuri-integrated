@@ -1,3 +1,5 @@
+import { Write } from '_components/write/Write';
+
 export default function WritePage() {
-  return <div>글작성 라우트</div>;
+  return <Write />;
 }
