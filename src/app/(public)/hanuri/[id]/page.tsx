@@ -2,7 +2,7 @@ import { ReadHanuri } from '_components/hanuri/ReadHanuri';
 import client from '_helpers/client/client';
 
 async function getData(id: string): Promise<HanuriType> {
-  const res = await client.get(`http://localhost:3000/api/hanuries/${id}`);
+  const res = await client.get(`/hanuries/${id}`);
 
   if (!res.data) {
     throw new Error('Failed to fetch data');

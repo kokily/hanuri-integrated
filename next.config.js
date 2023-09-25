@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['api.hanuri.or.kr'],
+    domains: ['hanuri.or.kr'],
   },
 };
 

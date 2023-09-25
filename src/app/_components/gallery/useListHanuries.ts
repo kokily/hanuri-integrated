@@ -1,7 +1,6 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import useLocalStorage from 'use-local-storage';
 
 import { listHanuriesAPI } from '_helpers/client/api';
 import { useObserver } from '_helpers/client/useObserver';
@@ -9,8 +8,6 @@ import { useObserver } from '_helpers/client/useObserver';
 export function useListHanuries() {
   const router = useRouter();
   const pathname = usePathname();
-
-  const [scrollY, setScrollY] = useLocalStorage('listScrollHanuries', 0);
 
   const { data, fetchNextPage } = useInfiniteQuery({
     queryKey: ['hanuries'],
@@ -28,7 +25,6 @@ export function useListHanuries() {
   }, [data]);
 
   const onReadHanuri = (id: string) => {
-    setScrollY(window.scrollY);
     router.push(`/hanuri/${id}`);
   };
 
@@ -37,10 +33,6 @@ export function useListHanuries() {
   };
 
   const { setTarget } = useObserver({ onIntersect });
-
-  useEffect(() => {
-    if (scrollY !== 0) window.scrollTo(0, Number(scrollY));
-  }, []);
 
   return {
     hanuries,
