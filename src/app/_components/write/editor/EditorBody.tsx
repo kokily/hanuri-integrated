@@ -25,7 +25,8 @@ export default function EditorBody(props: Props) {
     const editor = quillRef.current.getEditor();
     const range = editor.getSelection();
 
-    editor.insertEmbed(range.index, 'image', url);
+    editor.insertEmbed(range.index, 'image', `https://hanuri.or.kr/${url}`);
+    editor.setSelection(range.index + 1);
   };
 
   const imageHandler = () => {

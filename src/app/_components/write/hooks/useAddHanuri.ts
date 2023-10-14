@@ -12,7 +12,7 @@ export function useAddHanuri() {
   const [body, setBody] = useState('');
   const [tags, setTags] = useState<Array<string>>([]);
   const [thumbnail, setThumbnail] = useState('');
-  const [year, setYear] = useState('');
+  const [year, setYear] = useState('2023');
 
   const addHanuriMutate = useMutation(addHanuriAPI);
 
@@ -31,30 +31,33 @@ export function useAddHanuri() {
   const onChangeThumbnail = () => {
     const upload = document.createElement('input');
 
-    upload.type = 'file';
-
+    upload.setAttribute('type', 'file');
+    upload.setAttribute('accept', 'image/*');
     upload.click();
-    upload.onchange = async (e) => {
-      if (!upload.files) return;
 
+    upload.addEventListener('change', async () => {
       const file = upload.files[0];
       const formData = new FormData();
 
       formData.append('file', file);
 
-      const response = await client.post<any>(`/upload`, formData);
+      try {
+        const response = await client.post<{ url: string }>(
+          `/upload`,
+          formData,
+        );
 
-      if (!response.data) {
-        alert('upload failed');
-        return;
+        if (!response.data) {
+          alert('upload Failed!');
+        }
+
+        const { url } = response.data;
+
+        setThumbnail(`https://hanuri.or.kr/${url}`);
+      } catch (err: any) {
+        console.log(err);
       }
-
-      const fileName = response.data[1];
-
-      setThumbnail(
-        `http://localhost:3000/uploads/${fileName.file[0].newFilename}`,
-      );
-    };
+    });
   };
 
   const onChangeYear = (e: ChangeEvent<HTMLSelectElement>) => {

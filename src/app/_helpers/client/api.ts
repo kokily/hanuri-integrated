@@ -11,6 +11,6 @@ export async function listHanuriesAPI(queries: ListHanuriesQuery) {
 }
 
 export async function addHanuriAPI(payload: AddHanuriPayload) {
-  const response = await client.post<HanuriType>(`/hanuries`, payload);
+  const response = await client.post<HanuriType>(`/hanuries/add`, payload);
   return response.data;
 }

@@ -1,14 +1,27 @@
+import { Metadata } from 'next';
+
 import { ReadHanuri } from '_components/hanuri/ReadHanuri';
-import client from '_helpers/client/client';
+import { getData } from './_getData';
 
-async function getData(id: string): Promise<HanuriType> {
-  const res = await client.get(`/hanuries/${id}`);
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: any };
+}): Promise<Metadata> {
+  const hanuri = await getData(params.id);
 
-  if (!res.data) {
+  if (!hanuri) {
     throw new Error('Failed to fetch data');
   }
 
-  return res.data;
+  return {
+    title: hanuri.title,
+    description: hanuri.body.substring(0, 120).replace(/<[^>]*>?/g, ''),
+    keywords: hanuri.tags.toString(),
+    openGraph: {
+      images: [hanuri.thumbnail],
+    },
+  };
 }
 
 export default async function HanuriPage({

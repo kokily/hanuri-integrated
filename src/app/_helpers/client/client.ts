@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 const client = axios.create({
-  baseURL:
-    process.env.NODE_ENV === 'production'
-      ? 'https://hanuri.or.kr/api'
-      : 'http://localhost:3000/api',
+  baseURL: 'https://hanuri.or.kr/api',
   withCredentials: true,
 });
 

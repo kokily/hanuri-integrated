@@ -12,16 +12,17 @@ export async function POST(req: Request) {
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
-  const fileName = `${moment().format('YYYYMMDD_HHmmdd')}_${file.name.trim()}`;
-  const path = `${process.cwd()}/public/images/${fileName}`;
+  const prevFilename = file.name.replaceAll('_', '');
+  const fileName = `${moment().format('YYYYMMDDHHmmdd')}${prevFilename.trim()}`;
+  const path = `${process.cwd()}/uploads/${fileName}`;
 
   await writeFile(path, buffer);
 
-  console.log(`Open ${path} to see the uploaded file`);
+  console.log(`Open ${fileName} to see the uploaded file`);
 
   return new Response(
     JSON.stringify({
-      url: `/images/${fileName}`,
+      url: `uploads/${fileName}`,
     }),
   );
 }

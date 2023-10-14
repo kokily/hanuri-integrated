@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: 'https://hanuri.or.kr',
     title,
     siteName: '하누리 봉사회',
-    images: ['logo.webp'],
+    images: ['https://hanuri.or.kr/uploads/main.png'],
   },
 };
 
