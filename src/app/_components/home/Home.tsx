@@ -160,10 +160,10 @@ export function Home() {
                 leaveTo="opacity-0 scale-95 translate-y-24"
               >
                 <Dialog.Panel className="w-full max-w-6xl max-h-full overflow-auto bg-white rounded-2xl">
-                  <div className="relative aspect-w-16 aspect-h-9">
+                  <div className="relative aspect-w-9 aspect-h-9">
                     <iframe
                       className="absolute w-full h-full"
-                      src="https://www.youtube.com/embed/Gk8TdpH9cU0"
+                      src="https://www.youtube.com/embed/mq6ZgYBh4to?si=pj3XFMHnRBZpf2ok"
                       title="Video"
                       allowFullScreen
                     />

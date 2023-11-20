@@ -19,7 +19,7 @@ const title = '하누리 봉사회 - 환영합니다.';
 export const metadata: Metadata = {
   title,
   description:
-    '이웃을 사랑하는 마음으로 저소득층 아동과 장애아, 그리고 노인 등, 모든 봉사를 필요로 하는 곳에 따뜻한 손길을 내밀어 적극적인 봉사활동을 하기 위해 최선을 다하고 있습니다',
+    '모든 봉사를 필요로 하는 곳에 따뜻한 손길을 내밀어 적극적인 봉사활동을 하기 위해 최선을 다하고 있습니다',
   openGraph: {
     type: 'website',
     locale: 'ko_KR',
@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     title,
     siteName: '하누리 봉사회',
     images: ['https://hanuri.or.kr/uploads/main.png'],
+    description: '모든 봉사를 필요로 하는 곳에 따뜻한 손길을 내밀어 적극적인 봉사활동을 하기 위해 최선을 다하고 있습니다'
   },
 };
 
