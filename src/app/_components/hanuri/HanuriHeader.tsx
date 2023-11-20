@@ -18,12 +18,12 @@ export function HanuriHeader(props: Props) {
             {targetDate}
           </span>
         </div>
-        <h2 className="max-w-3xl mx-auto mt-4 text-center text-purple-900 h2">
+        <h2 className="max-w-3xl mx-auto mt-4 text-center text-purple-900 h3 md:h2">
           {props.title}
         </h2>
-        <p className="max-w-2xl mx-auto mt-4 text-xl leading-relaxed text-center text-purple-800 sm:mt-5">
+        <p className="max-w-2xl mx-auto mt-4 text-xl leading-relaxed text-center text-purple-800 sm:mt-5 sm:flex sm:flex-colum justify-center">
           {props.tags.map((tag) => (
-            <span key={`tag-${tag}`} className="text-blue-400 font-bold">
+            <span key={`tag-${tag}`} className="flex text-blue-400 font-bold justify-center md:mr-4">
               #{tag}{' '}
             </span>
           ))}

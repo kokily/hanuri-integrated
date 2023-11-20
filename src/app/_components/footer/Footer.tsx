@@ -8,6 +8,9 @@ export function Footer() {
           © {new Date().getFullYear()} 하누리봉사회. All rights reserved.
         </span>
         <p className="mt-0.5 flex items-center text-purple-800/90">
+          고유번호 396-80-02560
+        </p>
+        <p className="mt-0.5 flex items-center text-purple-800/90">
           Made with
           <Icon icon="heart" className="w-5 h-5 mx-1" />
           <span>by D&amp;K Dreams</span>

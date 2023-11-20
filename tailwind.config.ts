@@ -68,6 +68,7 @@ const config: Config = {
 
       width: {
         4.5: '1.125rem',
+        1200: '1200px',
       },
 
       maxWidth: {

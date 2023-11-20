@@ -39,6 +39,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="shortcut icon" href="/favicon.ico" />
+        <meta name="naver-site-verification" content="cba244e2a17e3202fdefcc52e4a367ba48a526a0" />
       </head>
       <body className={(clsx('font-sans'), roboto.variable)}>
         <QueryWrapper>

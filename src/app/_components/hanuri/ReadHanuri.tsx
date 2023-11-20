@@ -8,7 +8,7 @@ interface Props {
 
 export function ReadHanuri({ hanuri }: Props) {
   return (
-    <section className="px-4 pt-32 sm:px-6 lg:px-8 bg-gradient-to-b from-purple-25 to-white">
+    <section className="px-4 pt-10 sm:px-6 lg:px-8 bg-gradient-to-b from-purple-25 to-white md:pt-32">
       {hanuri ? (
         <>
           <HanuriHeader
