@@ -12,6 +12,7 @@ export function ReadHanuri({ hanuri }: Props) {
       {hanuri ? (
         <>
           <HanuriHeader
+            id={hanuri.id}
             title={hanuri.title}
             tags={hanuri.tags}
             date={hanuri.createdAt}

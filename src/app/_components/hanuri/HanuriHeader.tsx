@@ -1,10 +1,18 @@
+'use client';
+
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+
 interface Props {
+  id: string;
   date: string;
   title: string;
   tags: string[];
 }
 
 export function HanuriHeader(props: Props) {
+  const router = useRouter();
+  const { status } = useSession();
   const target = new Date(props.date);
   const targetDate = `${target.getFullYear()}. ${
     target.getMonth() + 1
@@ -23,12 +31,28 @@ export function HanuriHeader(props: Props) {
         </h2>
         <p className="max-w-2xl mx-auto mt-4 text-xl leading-relaxed text-center text-purple-800 sm:mt-5 sm:flex sm:flex-colum justify-center">
           {props.tags.map((tag) => (
-            <span key={`tag-${tag}`} className="flex text-blue-400 font-bold justify-center md:mr-4">
+            <span
+              key={`tag-${tag}`}
+              className="flex text-blue-400 font-bold justify-center md:mr-4"
+            >
               #{tag}{' '}
             </span>
           ))}
         </p>
       </div>
+      {status === 'authenticated' && (
+        <div className='text-center pt-4'>
+          <button
+            className="
+            bg-none text-blue-400 font-bold border border-collapse border-blue-400 rounded-lg px-2
+            py-1 cursor-pointer transition-all hover:bg-teal-400 hover:text-teal-200 hover:border-teal-200 active:-translate-x-1
+        "
+            onClick={() => router.push(`/write/update/${props.id}`)}
+          >
+            수정
+          </button>
+        </div>
+      )}
     </div>
   );
 }
