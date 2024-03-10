@@ -11,7 +11,11 @@ import dynamic from 'next/dynamic';
 
 const EditorBody = dynamic(() => import('./editor/EditorBody'), { ssr: false });
 
-export function Write() {
+interface Props {
+  id?: string;
+}
+
+export function Write({ id }: Props) {
   const {
     title,
     body,
@@ -24,7 +28,7 @@ export function Write() {
     onChangeTags,
     onChangeYear,
     onAddHanuri,
-  } = useAddHanuri();
+  } = useAddHanuri({ id });
   const { input, localTags, onRemoveTag, onChangeText, onSetTags } = useTags({
     tags,
     onChangeTags,

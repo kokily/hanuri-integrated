@@ -1,11 +1,20 @@
-import { type ChangeEvent, type SyntheticEvent, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import type { ChangeEvent, SyntheticEvent } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useMutation, useQuery } from '@tanstack/react-query';
 
-import { addHanuriAPI } from '_helpers/client/api';
+import {
+  addHanuriAPI,
+  readHanuriAPI,
+  updateHanuriAPI,
+} from '_helpers/client/api';
 import client from '_helpers/client/client';
 
-export function useAddHanuri() {
+interface Props {
+  id?: string;
+}
+
+export function useAddHanuri({ id }: Props) {
   const router = useRouter();
 
   const [title, setTitle] = useState('');
@@ -14,7 +23,16 @@ export function useAddHanuri() {
   const [thumbnail, setThumbnail] = useState('');
   const [year, setYear] = useState('2024');
 
+  // Data Query
+  const { data } = useQuery({
+    queryKey: ['updateHanuri'],
+    queryFn: () => readHanuriAPI(id),
+    enabled: !!id,
+  });
+
+  // Data Mutations
   const addHanuriMutate = useMutation(addHanuriAPI);
+  const updateHanuriMutate = useMutation(updateHanuriAPI);
 
   const onChangeTitle = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setTitle(e.target.value);
@@ -67,21 +85,51 @@ export function useAddHanuri() {
   const onAddHanuri = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    await addHanuriMutate.mutateAsync(
-      {
-        title,
-        body,
-        tags,
-        thumbnail,
-        year,
-      },
-      {
-        onSuccess: (data) => {
-          router.replace(`/hanuri/${data.id}`);
+    if (!id) {
+      await addHanuriMutate.mutateAsync(
+        {
+          title,
+          body,
+          tags,
+          thumbnail,
+          year,
         },
-      },
-    );
+        {
+          onSuccess: (data) => {
+            router.replace(`/hanuri/${data.id}`);
+          },
+        },
+      );
+    } else {
+      await updateHanuriMutate.mutateAsync(
+        {
+          id,
+          payload: {
+            title,
+            body,
+            tags,
+            thumbnail,
+            year,
+          },
+        },
+        {
+          onSuccess: (data) => {
+            router.replace(`/hanuri/${data.id}`);
+          },
+        },
+      );
+    }
   };
+
+  useEffect(() => {
+    if (data) {
+      setTitle(data.title);
+      setBody(data.body);
+      setTags(data.tags);
+      setThumbnail(data.thumbnail);
+      setYear(data.year);
+    }
+  }, [data]);
 
   return {
     title,
