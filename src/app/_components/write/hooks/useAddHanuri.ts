@@ -12,7 +12,7 @@ export function useAddHanuri() {
   const [body, setBody] = useState('');
   const [tags, setTags] = useState<Array<string>>([]);
   const [thumbnail, setThumbnail] = useState('');
-  const [year, setYear] = useState('2023');
+  const [year, setYear] = useState('2024');
 
   const addHanuriMutate = useMutation(addHanuriAPI);
 

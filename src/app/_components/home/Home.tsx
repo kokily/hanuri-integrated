@@ -51,7 +51,7 @@ export function Home() {
               />
             </Button>
             <Button
-              href="/gallery/2023"
+              href="/gallery/2024"
               variant="secondary"
               className="mt-6 sm:mt-0 sm:ml-6"
               size="lg"

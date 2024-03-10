@@ -104,6 +104,33 @@ export function WebNav({ navigation }: Props) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="absolute z-20 w-screen max-w-xs p-4 mt-3 -translate-x-1/2 bg-white border shadow-lg left-1/2 border-gray-50 rounded-2xl">
+                      <Menu.Item key={`desktop-dropdown-link-2024`} as="div">
+                        {({ close }) => (
+                          <>
+                            <Link
+                              href={`/gallery/2024`}
+                              className={clsx(
+                                'block w-full py-4 rounded-xl sm:p-5 group',
+                                pathname === `/gallery/2024`
+                                  ? 'bg-purple-25'
+                                  : 'transition duration-200 ease-in-out hover:bg-purple-25/60',
+                              )}
+                              onClick={close}
+                            >
+                              <h5 className="text-lg font-semibold text-purple-600">
+                                2024년
+                              </h5>
+                              <p className="mt-1 text-sm text-purple-800 opacity-90">
+                                하누리 봉사활동
+                              </p>
+                            </Link>
+
+                            <>
+                              <hr className="my-1 border-purple-200/30 sm:my-2" />
+                            </>
+                          </>
+                        )}
+                      </Menu.Item>
                       <Menu.Item key={`desktop-dropdown-link-2023`} as="div">
                         {({ close }) => (
                           <>
