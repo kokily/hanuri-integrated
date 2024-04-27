@@ -21,3 +21,19 @@ interface HanuriType {
   createdAt: string;
   updatedAt: string;
 }
+
+interface AddOrderType {
+  username: string;
+  divide: string;
+  product: string;
+  tempo: string;
+}
+
+interface OrderType {
+  id: string;
+  username: string;
+  divide: string;
+  product: string;
+  tempo: string;
+  createdAt: string;
+}

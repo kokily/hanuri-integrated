@@ -28,3 +28,12 @@ model Hanuri {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model Order {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  divide    String
+  product   String
+  tempo     String
+  createdAt DateTime @default(now())
+}
